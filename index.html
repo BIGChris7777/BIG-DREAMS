@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIG DREams | Fitness & Nutrition</title>
+<style>
+:root {
+  --bg:#0b0d0b;
+  --panel:#181c17;
+  --green:#c6ff57;
+  --white:#f5f7f2;
+  --muted:#a8afa3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--white);
+  font-family:Arial,Helvetica,sans-serif
+}
+header{
+  padding:22px 7%;display:flex;justify-content:space-between;
+  align-items:center;border-bottom:1px solid #292e26
+}
+.logo{font-size:22px;font-weight:900;letter-spacing:1px}
+.logo span{color:var(--green)}
+nav{display:flex;gap:22px;align-items:center}
+nav a{color:white;text-decoration:none;font-size:14px}
+.hero{
+  padding:100px 7% 90px;
+  background:radial-gradient(ellipse at 85% 35%,#304020 0%,transparent 42%)
+}
+.tag{color:var(--green);letter-spacing:3px;font-size:12px;font-weight:bold}
+h1{font-size:clamp(48px,9vw,100px);line-height:.95;margin:22px 0}
+h1 span{color:var(--green)}
+p{line-height:1.7}
+.hero p,.description{color:var(--muted);max-width:510px}
+.btn{
+  display:inline-block;background:var(--green);color:#11150d;
+  border:0;border-radius:5px;padding:15px 22px;
+  font-weight:bold;cursor:pointer;text-decoration:none;margin-top:16px
+}
+section{padding:60px 7%}
+h2{font-size:clamp(30px,5vw,46px);margin:12px 0}
+.products{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;margin-top:30px
+}
+.card{
+  background:var(--panel);border:1px solid #30372c;
+  border-radius:12px;padding:25px
+}
+.symbol{font-size:36px}
+.card h3{font-size:22px}
+.card p{color:var(--muted);min-height:70px}
+.price{font-size:26px;font-weight:800;color:var(--green)}
+.card button{width:100%}
+.note{font-size:12px;color:var(--muted)}
+#cart{
+  position:fixed;bottom:15px;right:15px;z-index:5;
+  width:min(350px,calc(100% - 30px));background:#20271d;
+  border:1px solid #526044;border-radius:12px;padding:20px
+}
+#cart[hidden]{display:none}
+footer{padding:30px 7%;border-top:1px solid #292e26;color:var(--muted)}
+@media(max-width:500px){
+  header{padding:18px 5%}nav{gap:12px}nav a{font-size:12px}
+  .hero{padding:75px 6%}section{padding:45px 6%}
+}
+</style>
+</head>
+<body>
+<header>
+  <a href="#" class="logo" style="color:white;text-decoration:none">BIG <span>DREams.</span></a>
+  <nav>
+    <a href="#shop">SHOP</a>
+    <a href="#about">ABOUT</a>
+    <a href="#cart" id="cartlink">🛒 <span id="count">0</span></a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="tag">DREAM BIG. TRAIN HARD.</div>
+    <h1>BUILD YOUR<br><span>BEST SELF.</span></h1>
+    <p>Deine Ziele. Dein Training. Dein Fortschritt. Entdecke digitale Trainings- und Ernährungs-Guides für deinen Fitnessweg.</p>
+    <a class="btn" href="#shop">ENTDECKE DEN SHOP ↗</a>
+  </section>
+
+  <section id="shop">
+    <div class="tag">BIG DREams STORE</div>
+    <h2>Level up your game.</h2>
+    <p class="description">Digitale Guides für Training und Ernährung.</p>
+    <div class="products">
+      <article class="card">
+        <div class="symbol">🏋️</div>
+        <h3>Muscle Builder</h3>
+        <p>Ein strukturierter Trainingsplan mit Übungen, Sätzen und Wiederholungen.</p>
+        <div class="price">14,99 €</div>
+        <button class="btn" data-product="workout">IN DEN WARENKORB</button>
+      </article>
+      <article class="card">
+        <div class="symbol">🥗</div>
+        <h3>Nutrition Guide</h3>
+        <p>Rezepte, Mahlzeitenideen und eine praktische Einkaufsliste.</p>
+        <div class="price">9,99 €</div>
+        <button class="btn" data-product="nutrition">IN DEN WARENKORB</button>
+      </article>
+      <article class="card">
+        <div class="symbol">⚡</div>
+        <h3>Complete Bundle</h3>
+        <p>Trainingsplan und Ernährungs-Guide als gemeinsames Paket.</p>
+        <div class="price">24,99 €</div>
+        <button class="btn" data-product="bundle">IN DEN WARENKORB</button>
+      </article>
+    </div>
+    <p class="note">Hinweis: Demo-Produkte. Noch keine echten Kaufangebote.</p>
+  </section>
+
+  <section id="about">
+    <div class="tag">OUR MISSION</div>
+    <h2>Dreams need discipline.</h2>
+    <p class="description">Wir glauben an klare Ziele, gute Gewohnheiten und kontinuierlichen Fortschritt.</p>
+  </section>
+</main>
+
+<aside id="cart" hidden>
+  <h2>Dein Warenkorb</h2>
+  <ul id="items"></ul>
+  <p>Gesamt: <strong id="total">0,00 €</strong></p>
+  <p class="note">Demo-Warenkorb. Zahlungen sind noch nicht aktiviert.</p>
+  <button class="btn" id="clear">Warenkorb leeren</button>
+  <button class="btn" id="close">Schließen</button>
+</aside>
+
+<footer>© <span id="year"></span> BIG DREams. Alle Rechte vorbehalten.</footer>
+
+<script>
+const products={
+  workout:{name:"Muscle Builder",price:14.99},
+  nutrition:{name:"Nutrition Guide",price:9.99},
+  bundle:{name:"Complete Bundle",price:24.99}
+};
+const cart=[];
+const panel=document.querySelector("#cart");
+
+function render(){
+  const list=document.querySelector("#items");
+  list.replaceChildren();
+  cart.forEach(id=>{
+    const li=document.createElement("li");
+    li.textContent=products[id].name+" – "+
+      products[id].price.toLocaleString("de-DE",{style:"currency",currency:"EUR"});
+    list.appendChild(li);
+  });
+  document.querySelector("#count").textContent=cart.length;
+  const total=cart.reduce((sum,id)=>sum+products[id].price,0);
+  document.querySelector("#total").textContent=
+    total.toLocaleString("de-DE",{style:"currency",currency:"EUR"});
+  panel.hidden=cart.length===0;
+}
+document.querySelectorAll("[data-product]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    cart.push(button.dataset.product);
+    render();
+  });
+});
+document.querySelector("#cartlink").addEventListener("click",event=>{
+  event.preventDefault();
+  panel.hidden=!panel.hidden;
+});
+document.querySelector("#clear").addEventListener("click",()=>{
+  cart.length=0;render();
+});
+document.querySelector("#close").addEventListener("click",()=>{
+  panel.hidden=true;
+});
+document.querySelector("#year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
